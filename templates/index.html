@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoverX Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <header class="bg-dark text-white p-2 mb-2">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h1 class="h3 mb-0">
+              <i class="fas fa-robot me-2"></i>RoverX Dashboard
+            </h1>
+          </div>
+          <div class="col-md-4 text-end">
+            <button id="startBtn" class="btn btn-success btn-sm me-2">
+              <i class="fas fa-play me-1"></i>Start
+            </button>
+            <button id="stopBtn" class="btn btn-danger btn-sm" disabled>
+              <i class="fas fa-stop me-1"></i>Stop
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="row g-2">
+        <!-- Left Column -->
+        <div class="col-md-4">
+          <!-- Status Panel -->
+          <div class="card mb-2">
+            <div class="card-header bg-primary text-white py-2">
+              <h5 class="mb-0">
+                <i class="fas fa-info-circle me-2"></i>Status
+              </h5>
+            </div>
+            <div class="card-body p-2">
+              <div class="status-grid">
+                <div class="status-item">
+                  <span class="status-label">
+                    <i class="fas fa-robot me-2"></i>Status
+                  </span>
+                  <span id="roverStatus" class="status-value badge bg-secondary"
+                    >Idle</span
+                  >
+                </div>
+                <div class="status-item">
+                  <span class="status-label">
+                    <i class="fas fa-battery-full me-2"></i>Battery
+                  </span>
+                  <div class="battery-status">
+                    <i class="fas fa-battery-full battery-icon"></i>
+                    <span class="status-value" id="batteryLevel">100%</span>
+                  </div>
+                </div>
+                <div class="status-item">
+                  <span class="status-label">
+                    <i class="fas fa-map-marker-alt me-2"></i>Position
+                  </span>
+                  <span id="roverPosition" class="status-value">X=0, Y=0</span>
+                </div>
+                <div class="status-item">
+                  <span class="status-label">
+                    <i class="fas fa-fingerprint me-2"></i>Session ID
+                  </span>
+                  <span id="sessionId" class="status-value">None</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sensor Data Panel -->
+          <div class="card mb-2">
+            <div class="card-header bg-info text-white py-2">
+              <h5 class="mb-0"><i class="fas fa-microchip me-2"></i>Sensors</h5>
+            </div>
+            <div class="card-body p-2">
+              <div class="sensor-grid">
+                <!-- Accelerometer -->
+                <div class="sensor-panel">
+                  <h6 class="sensor-title">
+                    <i class="fas fa-tachometer-alt me-2"></i>Accelerometer
+                  </h6>
+                  <div class="sensor-item">
+                    <span class="sensor-label">X:</span>
+                    <span id="accelX" class="sensor-value">0.00</span>
+                  </div>
+                  <div class="sensor-item">
+                    <span class="sensor-label">Y:</span>
+                    <span id="accelY" class="sensor-value">0.00</span>
+                  </div>
+                  <div class="sensor-item">
+                    <span class="sensor-label">Z:</span>
+                    <span id="accelZ" class="sensor-value">0.00</span>
+                  </div>
+                </div>
+
+                <!-- Ultrasonic -->
+                <div class="sensor-panel">
+                  <h6 class="sensor-title">
+                    <i class="fas fa-wave-square me-2"></i>Ultrasonic
+                  </h6>
+                  <div class="sensor-item">
+                    <span class="sensor-label">Distance:</span>
+                    <span id="ultrasonicDistance" class="sensor-value"
+                      >N/A</span
+                    >
+                  </div>
+                  <div class="sensor-item">
+                    <span class="sensor-label">Detection:</span>
+                    <span
+                      id="ultrasonicDetection"
+                      class="sensor-value badge bg-secondary"
+                      >No</span
+                    >
+                  </div>
+                </div>
+
+                <!-- IR Sensor -->
+                <div class="sensor-panel">
+                  <h6 class="sensor-title">
+                    <i class="fas fa-broadcast-tower me-2"></i>IR Sensor
+                  </h6>
+                  <div class="sensor-item">
+                    <span class="sensor-label">Reflection:</span>
+                    <span
+                      id="irReflection"
+                      class="sensor-value badge bg-secondary"
+                      >No</span
+                    >
+                  </div>
+                </div>
+
+                <!-- RFID Sensor -->
+                <div class="sensor-panel">
+                  <h6 class="sensor-title">
+                    <i class="fas fa-id-card me-2"></i>RFID Sensor
+                  </h6>
+                  <div class="sensor-item">
+                    <span class="sensor-label">Tag Detected:</span>
+                    <span
+                      id="rfidDetection"
+                      class="sensor-value badge bg-secondary"
+                      >No</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-8">
+          <!-- Path Visualization Panel -->
+          <div class="card mb-2">
+            <div class="card-header bg-primary text-white py-2">
+              <h5 class="mb-0">
+                <i class="fas fa-route me-2"></i>Path Visualization
+              </h5>
+            </div>
+            <div class="card-body p-2">
+              <div class="path-visualization-container">
+                <canvas id="pathCanvas" width="700" height="200"></canvas>
+              </div>
+              <div class="d-flex justify-content-between mt-2">
+                <div class="legend-item">
+                  <i class="fas fa-robot legend-icon" style="color: blue"></i>
+                  <span>Rover</span>
+                </div>
+                <div class="legend-item">
+                  <i class="fas fa-route legend-icon" style="color: green"></i>
+                  <span>Path</span>
+                </div>
+                <div class="legend-item">
+                  <i
+                    class="fas fa-user-shield legend-icon"
+                    style="color: red"
+                  ></i>
+                  <span>Survivor</span>
+                </div>
+                <div class="legend-item">
+                  <i
+                    class="fas fa-flag-checkered legend-icon"
+                    style="color: orange"
+                  ></i>
+                  <span>Start</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Movement History and Survivors Row -->
+          <div class="row g-2">
+            <!-- Movement History -->
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-header bg-warning text-dark py-2">
+                  <h5 class="mb-0">
+                    <i class="fas fa-history me-2"></i>Movement History
+                  </h5>
+                </div>
+                <div class="card-body p-2">
+                  <div class="movement-history-container">
+                    <ul id="movementHistory" class="list-group movement-list">
+                      <!-- Movement history will be added here -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Survivors Found Panel -->
+            <div class="col-md-6">
+              <div class="card h-100">
+                <div class="card-header bg-danger text-white py-2">
+                  <h5 class="mb-0">
+                    <i class="fas fa-user-shield me-2"></i>Survivors
+                  </h5>
+                </div>
+                <div class="card-body p-2">
+                  <div class="survivors-container">
+                    <div class="d-flex align-items-center mb-2">
+                      <div class="survivors-count-label me-3">
+                        <h3 class="mb-0">
+                          <i class="fas fa-users me-2"></i>Total:
+                        </h3>
+                      </div>
+                      <div class="survivors-count-value">
+                        <h3 id="survivorsCount" class="mb-0 badge">0</h3>
+                      </div>
+                    </div>
+                    <div id="survivorsList" class="survivors-list">
+                      <div
+                        class="text-muted text-center"
+                        id="noSurvivorsMessage"
+                      >
+                        No survivors found yet
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Minimizable Rover Log Window -->
+      <div id="logWindow" class="log-window">
+        <div class="log-window-header">
+          <h5 class="mb-0">
+            <i class="fas fa-clipboard-list me-2"></i>Rover Log
+          </h5>
+          <div class="log-window-controls">
+            <button id="clearLogBtn" class="btn btn-sm btn-outline-light me-2">
+              <i class="fas fa-trash"></i>
+            </button>
+            <button id="minimizeLogBtn" class="btn btn-sm btn-outline-light">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="log-window-body">
+          <div id="logEntries" class="log-entries">
+            <!-- Log entries will be added here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

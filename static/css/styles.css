@@ -1,0 +1,571 @@
+/* Main Styles */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --success-color: #2ecc71;
+  --danger-color: #e74c3c;
+  --warning-color: #f1c40f;
+  --info-color: #1abc9c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+body {
+  background-color: #f8f9fa;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--primary-color);
+  overflow-x: hidden;
+}
+
+.container-fluid {
+  padding: 10px;
+}
+
+/* Header Styles */
+header {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  ) !important;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 15px !important;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Card Styles */
+.card {
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  margin-bottom: 10px;
+  background: white;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Status Grid */
+.status-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 0;
+}
+
+.status-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(2px);
+}
+
+.status-label {
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.status-label i {
+  font-size: 1.1rem;
+  width: 1.5rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.status-value {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-value.badge {
+  padding: 0.5em 0.75em;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Progress Bar */
+.progress {
+  height: 16px;
+  border-radius: 8px;
+  background-color: #e9ecef;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--success-color), #27ae60);
+  transition: width 0.5s ease;
+}
+
+/* Sensor Grid */
+.sensor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.sensor-panel {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  border: 1px solid #e9ecef;
+  margin-bottom: 0;
+}
+
+.sensor-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sensor-title {
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--light-color);
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.sensor-item {
+  margin-bottom: 4px;
+  padding: 4px 6px;
+  background: var(--light-color);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sensor-item:last-child {
+  margin-bottom: 0;
+}
+
+.sensor-label {
+  font-weight: 600;
+  color: var(--primary-color);
+  display: inline-block;
+  width: 80px;
+  margin-right: 8px;
+}
+
+.sensor-value {
+  font-family: "Courier New", monospace;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* Movement History and Survivors */
+.movement-history-container,
+.survivors-list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.movement-list {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.movement-item {
+  padding: 6px 8px;
+  margin-bottom: 4px;
+  border-left: 3px solid var(--secondary-color);
+  background-color: white;
+  border-radius: 4px;
+  transition: var(--transition);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.movement-item:hover {
+  transform: translateX(3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.survivors-container {
+  padding: 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.survivors-count-value h3 {
+  font-size: 1.5rem;
+  color: green;
+  font-weight: 700;
+}
+
+.survivor-item {
+  background-color: white;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  border-left: 3px solid var(--danger-color);
+  transition: var(--transition);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.survivor-item:hover {
+  transform: translateX(3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card height adjustments */
+.card.h-100 {
+  height: 100% !important;
+}
+
+.card.h-100 .card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Path Visualization */
+.path-visualization-container {
+  border: 1px solid var(--light-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background-color: white;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#pathCanvas {
+  background-color: white;
+  border-radius: 6px;
+}
+
+/* Log Window */
+.log-window {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  width: 400px;
+  background: #1a1a1a;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.log-window.minimized {
+  height: 40px;
+  overflow: hidden;
+}
+
+.log-window-header {
+  background: var(--dark-color);
+  color: white;
+  padding: 8px 12px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.log-window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.log-window-body {
+  height: 300px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.log-entries {
+  color: #f8f9fa;
+  font-family: "Fira Code", "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+.log-entry {
+  margin-bottom: 4px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.log-entry:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.log-timestamp {
+  color: #95a5a6;
+  margin-right: 6px;
+}
+
+.log-info {
+  color: #3498db;
+}
+
+.log-success {
+  color: #2ecc71;
+}
+
+.log-warning {
+  color: #f1c40f;
+}
+
+.log-error {
+  color: #e74c3c;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+  font-size: 0.9rem;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, var(--success-color), #27ae60);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--danger-color), #c0392b);
+}
+
+/* Legend Styles */
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.legend-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.legend-icon {
+  font-size: 1rem;
+  width: 16px;
+  text-align: center;
+}
+
+.legend-item span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 5px;
+  }
+
+  .status-label,
+  .sensor-label {
+    width: 80px;
+  }
+
+  .card-header {
+    padding: 6px 10px;
+  }
+
+  .sensor-panel {
+    margin-bottom: 8px;
+  }
+
+  .movement-history-container,
+  .survivors-list {
+    max-height: 250px;
+  }
+
+  .survivors-count-value h3 {
+    font-size: 1.3rem;
+  }
+
+  .log-window {
+    width: 100%;
+    right: 0;
+  }
+}
+
+/* Status Panel */
+.status-panel {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+}
+
+.status-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 0;
+}
+
+.status-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(2px);
+}
+
+.status-label {
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.status-label i {
+  font-size: 1.1rem;
+  width: 1.5rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.status-value {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-value.badge {
+  padding: 0.5em 0.75em;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Battery level specific styling */
+#batteryLevel {
+  font-family: "Courier New", monospace;
+  letter-spacing: 0.5px;
+}
+
+/* Survivors count styling */
+#survivorsCount {
+  color: #e74c3c; /* Bright red color for survivors count */
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px rgba(231, 76, 60, 0.3);
+  transition: var(--transition);
+}
+
+#survivorsCount.survivor-found {
+  animation: survivorPulse 1s ease-in-out;
+}
+
+@keyframes survivorPulse {
+  0% {
+    transform: scale(1);
+    color: #e74c3c;
+  }
+  50% {
+    transform: scale(1.2);
+    color: #c0392b;
+  }
+  100% {
+    transform: scale(1);
+    color: #e74c3c;
+  }
+}
+
+/* Battery Status Styling */
+.battery-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.battery-icon {
+  font-size: 1.2rem;
+  color: var(--success-color);
+  transition: var(--transition);
+}
+
+.battery-icon.low {
+  color: var(--warning-color);
+}
+
+.battery-icon.critical {
+  color: var(--danger-color);
+}
