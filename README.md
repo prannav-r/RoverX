@@ -1,6 +1,6 @@
 # RoverX - Autonomous Rescue Rover for Disaster Zones
 
-## Problem Statement (Programming Category)
+## Problem Statement - 1 (Programming Category)
 
 - An advanced autonomous rover system designed for disaster response and survivor rescue operations. The system features intelligent navigation, multi-sensor survivor detection, and sophisticated power management.
 
