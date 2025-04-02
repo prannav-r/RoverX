@@ -1,0 +1,133 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/adept/pioneer3/protos/Pioneer3at.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/obstacles/protos/OilBarrel.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/rocks/protos/Rock.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/CardboardBox.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "TurtleBot3Caster"
+      material2 "floor"
+      coulombFriction [
+        0.1
+      ]
+      softCFM 0.0001
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.5773502691896257 0.5773502691896257 0.5773502691896257 2.0944
+  position 1.9176156531165214e-05 1.9176210754240835e-05 16.78170496148774
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 10 10
+  wallHeight 0.5
+}
+Pioneer3at {
+  hidden position_0_0 -27.234782312813913
+  hidden position_0_1 58.91754100416811
+  hidden position_0_2 -27.235149757166106
+  hidden position_0_3 58.918209579544715
+  hidden rotation_1 0.6943792884308376 -0.6943714700920015 0.18890649888385574 3.5150061180312324
+  hidden rotation_2 0.362158579682414 -0.36215191297026694 0.8588871608624691 4.560845749432135
+  hidden rotation_3 0.6943613093322437 -0.6943534907293017 0.1890386257208984 3.5152612576171256
+  hidden rotation_4 0.36240798190013745 -0.3624013133273585 0.8586767393808192 4.5606035402027665
+  translation 0.25205289351310883 -0.24315012758143403 -0.001194465507868142
+  rotation -1.221984843306637e-05 1.4646281145562353e-05 0.9999999998180809 1.3945292746142273
+  controller "RovX_controller"
+}
+OilBarrel {
+  translation 2 0 0
+  name "barrel1"
+}
+OilBarrel {
+  translation 2 1 0
+  name "barrel2"
+}
+OilBarrel {
+  translation 2 -1 0
+  name "barrel3"
+}
+Rock {
+  translation -1 2 0
+  rotation 0 0 1 0.5
+  name "rock1"
+}
+Rock {
+  translation -2 -1.5 0
+  rotation 0 0 1 -0.3
+  name "rock2"
+}
+CardboardBox {
+  translation -1.7355379551739643e-16 2.5 0.2998037994187829
+  rotation -1.7122468284521847e-16 -2.331758879474002e-16 1 0.2
+  name "box1"
+  mass 1
+}
+CardboardBox {
+  translation -2.4345770585901105 -0.8288843426228069 0.3997056999515565
+  rotation 0.9883041711820578 0.10783057348075856 0.10783057380426303 1.5825608186788391
+  name "box2"
+  size 0.8 0.8 0.8
+  mass 1.5
+}
+Solid {
+  translation 1 -2 0.1981164802759446
+  rotation -4.2408669505719374e-17 8.015271277553967e-18 1 0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 0.6 0.4 0.4
+      }
+    }
+  ]
+  name "obstacle1"
+  boundingObject Box {
+    size 0.6 0.4 0.4
+  }
+  physics Physics {
+    density 100
+  }
+  linearVelocity -7.787391216212384e-18 -1.1906415497669615e-17 -4.5352496378107665e-09
+  angularVelocity 5.63591217368698e-17 -1.3505963260454205e-16 -1.142528254482592e-17
+}
+Solid {
+  translation -1.5 1 0.19803800027911975
+  rotation 1.4316521551710465e-16 1.1552556812329067e-16 -1 0.20000000000000007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.7 0.7 0.7
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 0.5 0.5 0.4
+      }
+    }
+  ]
+  name "obstacle2"
+  boundingObject Box {
+    size 0.5 0.5 0.4
+  }
+  physics Physics {
+    density 100
+  }
+  linearVelocity 3.5574765834642375e-18 -1.4135675782656603e-17 -4.597938914604245e-09
+  angularVelocity -2.4706501504543e-32 4.1592745507908365e-17 5.899456062936802e-18
+}
