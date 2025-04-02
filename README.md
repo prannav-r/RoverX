@@ -294,3 +294,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Implements WebSocket for real-time communication
 - Integrates with external API for data management
 - Powered by Webots for realistic simulation
+
+## Developed by Team Prospera
+
+- Tharun T.V
+- Rishab Rajeev
+- Priyajit Biswal
+- Prannav R
